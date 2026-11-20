@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RootNamespace>PremiumLift</RootNamespace>
+    <AssemblyName>PremiumLift</AssemblyName>
+    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+    <!-- Lets the project also build on non-Windows machines (CI / checking). Harmless on Windows. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- SQLite ADO.NET provider. Gives SQLiteDataAdapter, needed for the
+         disconnected model (DataAdapter.Update) required in Task 3. -->
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Ships the (empty) log database next to the .exe in a Data folder.
+         PreserveNewest = an existing log in bin\ is not overwritten. -->
+    <None Update="Data\ElevatorLog.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
